@@ -18,4 +18,13 @@ public class GameLogView_ extends LinearLayout implements View.OnClickListener {
     public void onClick(View v) {
 
     }
+
+    private void insertDB() {
+        new Thread(){
+            @Override
+            public void run() {
+
+            }
+        }.start();
+    }
 }
