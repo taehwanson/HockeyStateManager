@@ -1,112 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
-    tools:showIn="@layout/activity_main">
-
+    android:orientation="horizontal"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.355"
+    tools:layout_editor_absoluteX="5dp">
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/mHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355"
-        tools:layout_editor_absoluteX="5dp">
-        <LinearLayout
-            android:id="@+id/mHome"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/mTeamScore"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <RelativeLayout
-                android:id="@+id/mTeamScore"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/mTeamImage"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:src="@mipmap/ic_launcher" />
 
-                <ImageView
-                    android:id="@+id/mTeamImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:id="@+id/mScore"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_alignBottom="@+id/mTeamImage"
-                    android:layout_toEndOf="@+id/mTeamImage"
-                    android:gravity="center"
-                    android:text="00" />
-
-            </RelativeLayout>
-            <Button
-                android:id="@+id/mEditMember"
+            <TextView
+                android:id="@+id/mScore"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Members" >
-            </Button>
-            <LinearLayout
-                    android:id="@+id/mScoreContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <Button
-                        android:id="@+id/mAddScore"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Score!">
-                    </Button>
-                    <Button
-                        android:id="@+id/mScoreLog"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:text="S Log">
-                    </Button>
-                </LinearLayout>
-            <LinearLayout
-                android:id="@+id/mPenaltyContainer"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/mTeamImage"
+                android:layout_toEndOf="@+id/mTeamImage"
+                android:gravity="center"
+                android:text="00" />
+
+        </RelativeLayout>
+        <Button
+            android:id="@+id/mEditMember"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Members" >
+        </Button>
+        <LinearLayout
+                android:id="@+id/mScoreContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <Button
-                    android:id="@+id/mAddPenalty"
+                    android:id="@+id/mAddScore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Penalty!">
+                    android:text="Score!">
                 </Button>
-                <Button
-                    android:id="@+id/mPenaltyLog"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:text="P Log">
-                </Button>
-            </LinearLayout>
-
-            <include layout="@layout/goalee_panel" />
-            <include layout="@layout/penalty_timer" />
-
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/mAway"
+            android:id="@+id/mPenaltyContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1">
-
-
-            </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/mAddPenalty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Penalty!">
+            </Button>
         </LinearLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <include layout="@layout/goalee_panel" />
+        <include layout="@layout/penalty_timer" />
+    </LinearLayout>
+</LinearLayout>

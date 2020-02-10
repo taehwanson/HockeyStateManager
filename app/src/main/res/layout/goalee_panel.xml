@@ -62,20 +62,25 @@
             <ImageButton
                 android:id="@+id/mP1Up"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
                 android:src="@mipmap/up"/>
             <TextView
+                android:id="@+id/mP1Goalee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="30dp"
-                android:text="_0_"/>
+                android:text="0"/>
             <ImageButton
                 android:id="@+id/mP1Down"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
                 android:src="@mipmap/down"/>
 
         </LinearLayout>
@@ -88,20 +93,25 @@
             <ImageButton
                 android:id="@+id/mP2Up"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
                 android:src="@mipmap/up"/>
             <TextView
+                android:id="@+id/mP2Goalee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="30dp"
-                android:text="_0_"/>
+                android:text="0"/>
             <ImageButton
                 android:id="@+id/mP2Down"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
                 android:src="@mipmap/down"/>
 
         </LinearLayout>
@@ -114,20 +124,25 @@
             <ImageButton
                 android:id="@+id/mP3Up"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
                 android:src="@mipmap/up"/>
             <TextView
+                android:id="@+id/mP3Goalee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textSize="30dp"
-                android:text="_0_"/>
+                android:text="0"/>
             <ImageButton
                 android:id="@+id/mP3Down"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:padding="5dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
                 android:src="@mipmap/down"/>
 
         </LinearLayout>
@@ -138,7 +153,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="_0_"
+            android:text="0"
             android:textSize="30dp" />
     </LinearLayout>
 </LinearLayout>

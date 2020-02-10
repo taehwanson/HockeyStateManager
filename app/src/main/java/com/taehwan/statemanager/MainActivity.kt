@@ -25,13 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                .setAction("Action", null).show()
-            var intent = Intent()
-            intent.setAction("TeamListActivity")
-            startActivity(intent)
-        }
+//
 
         // Configure sign-in to request the user's ID, email address, and basic
 // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -42,9 +36,13 @@ class MainActivity : AppCompatActivity() {
 
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-
-
         sign_in_button.setOnClickListener { signIn(); }
+
+//        var view = GameLogView(this)
+//        mTeamContainer.addView(view)
+        mHomeContainer.addView(GameLogView(this))
+        mAwayContainer.addView(GameLogView(this))
+
     }
     private fun signIn() {
         val signInIntent = mGoogleSignInClient!!.getSignInIntent()
