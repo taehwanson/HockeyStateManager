@@ -1,53 +1,75 @@
 package com.taehwan.statemanager
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.core.view.marginBottom
 import androidx.room.Room
-import kotlinx.android.synthetic.main.content_main.view.*
 import kotlinx.android.synthetic.main.goalee_panel.view.*
-import java.util.*
+import kotlinx.android.synthetic.main.penalty_timer.view.*
 
 
-class GameLogView(context: Context) : LinearLayout(context), View.OnClickListener {
+class TimerView(context: Context, parent: ViewGroup, playerNum: Int, sec: Int) : LinearLayout(context), View.OnClickListener {
     companion object {
-        private var mContext : Context?=null
-    }
 
-    private var mGoalee1P = 0
-    private var mGoalee2P = 0
-    private var mGoalee3P = 0
+    }
+    private var mContext : Context?=null
+    private var mParent : ViewGroup?=null
+    private var mSec =0
+
 
     init {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        inflater.inflate(R.layout.content_main, this, true)
+        inflater.inflate(R.layout.penalty_timer, this, true)
         mContext = context
-        mP1Up.setOnClickListener(this)
-        mP1Down.setOnClickListener(this)
-        mP2Up.setOnClickListener(this)
-        mP2Down.setOnClickListener(this)
-        mP3Up.setOnClickListener(this)
-        mP3Down.setOnClickListener(this)
-        mHome.addView(TimerView(context,mHome, 11,15))
-
+        mParent = parent
+        mSec = sec
+        mPenaltyNumber.text = playerNum.toString()
+        mClose.setOnClickListener(this)
+        mPenaltyTimerBody.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
-        when(v){
-            mP1Up -> mP1Goalee.text = (++mGoalee1P).toString();
-            mP1Down -> mP1Goalee.text = ( if( mGoalee1P > 0 ) --mGoalee1P else mGoalee1P ).toString()
-            mP2Up -> mP2Goalee.text = (++mGoalee2P).toString()
-            mP2Down -> mP2Goalee.text = (if( mGoalee2P > 0 ) --mGoalee2P else mGoalee2P ).toString()
-            mP3Up -> mP3Goalee.text = (++mGoalee3P).toString()
-            mP3Down -> mP3Goalee.text = (if( mGoalee3P >0 ) --mGoalee3P else mGoalee3P ).toString()
+        when(v) {
+            mClose -> mParent!!.removeView(this)
+            mPenaltyTimerBody -> startTimer()
         }
-        mTotal.text = (mGoalee1P + mGoalee2P + mGoalee3P).toString()
 
         selectAll()
     }
 
+    private fun startTimer() {
+        Thread(Runnable {
+            while (true) {
+                try {
+                    Thread.sleep(1000)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+
+                --mSec
+                var sec = mSec%60
+                var min = mSec/60
+                Handler(Looper.getMainLooper()).post {
+                    if( mSec == 0) {
+                        mParent!!.removeView(this)
+                    } else {
+                        mPenaltyTimerMin.text = min.toString()
+                        mPenaltyTimerSec.text = sec.toString()
+                    }
+                }
+                if( mSec == 0) {
+                    break
+                }
+            }
+        }).start()
+
+    }
 //    private fun insertDB() {
 //        object : Thread() {
 //            override fun run() {

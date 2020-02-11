@@ -72,6 +72,5 @@
         </LinearLayout>
 
         <include layout="@layout/goalee_panel" />
-        <include layout="@layout/penalty_timer" />
     </LinearLayout>
 </LinearLayout>

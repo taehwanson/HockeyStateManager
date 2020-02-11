@@ -1,9 +1,14 @@
 package com.taehwan.statemanager;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import androidx.annotation.MainThread;
 
 public class GameLogView_ extends LinearLayout implements View.OnClickListener {
 
@@ -20,11 +25,24 @@ public class GameLogView_ extends LinearLayout implements View.OnClickListener {
     }
 
     private void insertDB() {
-        new Thread(){
+        new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
 
+                    }
+                });
             }
-        }.start();
+        }).start();
+
     }
+
+
 }
