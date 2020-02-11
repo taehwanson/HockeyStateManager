@@ -1,6 +1,7 @@
 package com.taehwan.statemanager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
@@ -17,6 +18,8 @@ public class GameLogView_ extends LinearLayout implements View.OnClickListener {
         super(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.content_main, this,true);
+        Intent intent = new Intent(context, ScoreActivity.class);
+        context.startActivity(intent);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.taehwan.statemanager
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,8 @@ class GameLogView(context: Context) : LinearLayout(context), View.OnClickListene
         mP2Down.setOnClickListener(this)
         mP3Up.setOnClickListener(this)
         mP3Down.setOnClickListener(this)
+        mAddScore.setOnClickListener(this)
+
         mHome.addView(TimerView(context,mHome, 11,15))
 
     }
@@ -42,6 +45,11 @@ class GameLogView(context: Context) : LinearLayout(context), View.OnClickListene
             mP2Down -> mP2Goalee.text = (if( mGoalee2P > 0 ) --mGoalee2P else mGoalee2P ).toString()
             mP3Up -> mP3Goalee.text = (++mGoalee3P).toString()
             mP3Down -> mP3Goalee.text = (if( mGoalee3P >0 ) --mGoalee3P else mGoalee3P ).toString()
+
+            mAddScore->{
+                val intent = Intent(context, ScoreActivity::class.java)
+                context.startActivity(intent)
+            }
         }
         mTotal.text = (mGoalee1P + mGoalee2P + mGoalee3P).toString()
 
